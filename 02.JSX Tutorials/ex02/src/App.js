@@ -4,7 +4,9 @@ import React from 'react';
 function App() {
     return (
         <div>
-            <h1>Ex02</h1>
+            <h1>
+                Ex02
+            </h1>
             <p>특징 II: Sigle Root</p>
         </div>
     );
@@ -24,7 +26,7 @@ function App() {
 // Error: Adjacent JSX elements must be wrapped in an enclosing tag
 //
 // function App() {
-//     return (    
+//     return (
 //         <h2>Ex02</h2>
 //         <p>특징 II: Sigle Root</p>
 //     )
@@ -36,6 +38,7 @@ function App() {
 //         React.createElement('p', null, '특징 II: Sigle Root')
 //     );    
 // }
+
 //
 
 export {App};

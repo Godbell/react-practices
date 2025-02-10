@@ -1,10 +1,8 @@
 import React from 'react';
 
-function Header(props) {
+function Header() {
     return (
-        <h1>
-            Ex07
-        </h1>
+        <h1>Ex03</h1>
     );
 }
 
