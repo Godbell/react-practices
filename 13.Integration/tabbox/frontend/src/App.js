@@ -1,13 +1,13 @@
 import React from 'react';
-import './assets/css/styles.css';
 import { TabBox } from './components/TabBox';
 import data from './assets/json/data';
+import './assets/scss/App.scss';
 
 function App(props) {
   return (
     <>
-      <div id={'App'}>
-        Tabox 과제
+      <div id="App">
+        TabBox 과제
         <TabBox tabs={data} />
       </div>
     </>
