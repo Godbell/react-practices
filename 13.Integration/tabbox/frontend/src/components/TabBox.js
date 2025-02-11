@@ -17,8 +17,8 @@ export const TabBox = ({ tabs }) => {
     <div className="tab-box">
       <ul>
         {tabs
-          .map((tab, index) => (
-            <Tab key={index} name={tab.name} contents={tab.contents} />
+          .map((tab) => (
+            <Tab key={tab.no} name={tab.name} contents={tab.contents} />
           ))
           .reverse()}
       </ul>
