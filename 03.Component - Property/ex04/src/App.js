@@ -4,8 +4,8 @@ import MyComponent from './MyComponent';
 function App() {
     return (
         <div id={'App'}>
-            <MyComponent
-                props02={undefined}
+            <MyComponent 
+                props02={'hello'}
                 props03={undefined} 
                 props04={undefined}
                 props05={undefined}
