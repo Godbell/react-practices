@@ -10,7 +10,7 @@ function getCurrentTime() {
   };
 }
 
-export default function App({ unmount }) {
+export default function App() {
   const [currentTime, setCurrentTime] = useState({
     hours: new Date().getHours(),
     minutes: new Date().getMinutes(),
