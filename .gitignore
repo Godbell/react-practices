@@ -53,3 +53,5 @@
 ## application
 **/logs
 /.metadata/
+
+main.js.LICENSE.txt
