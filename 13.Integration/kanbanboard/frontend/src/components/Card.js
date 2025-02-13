@@ -1,5 +1,10 @@
 import React from 'react';
 import { TaskList } from './TaskList';
+import {
+  Card_Title,
+  Card_Item,
+  Card_Title_Open,
+} from '../assets/scss/card.scss';
 
 /**
  * @param {CardData} props
@@ -7,8 +12,8 @@ import { TaskList } from './TaskList';
  */
 export const Card = ({ no, title, description, tasks }) => {
   return (
-    <div className="_Card">
-      <div className="Card_Title Card_Title_Open">{title}</div>
+    <div className={Card_Item}>
+      <div className={`${Card_Title} ${Card_Title_Open}`}>{title}</div>
       <div className="Card_Details">
         {description}
         <TaskList tasks={tasks}></TaskList>

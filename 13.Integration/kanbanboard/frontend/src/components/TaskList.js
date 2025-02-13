@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Task } from './Task';
 import { InputAddTask } from './InputAddTask';
+import { Task_List } from '../assets/scss/taskList.scss';
 
 const MOCK_ID_MODIFIER = 100;
 
@@ -18,7 +19,7 @@ export const TaskList = ({ tasks }) => {
   };
 
   return (
-    <div className="Task_List">
+    <div className={Task_List}>
       <ul>
         {taskList.map((task) => (
           <Task
