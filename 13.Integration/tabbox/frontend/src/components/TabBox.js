@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Tab } from './Tab';
 import { Tab_Box } from '../assets/scss/TabBox.scss';
 import { Tab_View } from '../assets/scss/TabView.scss';
