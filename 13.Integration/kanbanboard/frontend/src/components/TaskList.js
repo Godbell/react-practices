@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Task } from './Task';
+import { InputAddTask } from './InputAddTask';
+
+const MOCK_ID_MODIFIER = 100;
 
 /**
  * @param {{
@@ -10,6 +13,10 @@ import { Task } from './Task';
 export const TaskList = ({ tasks }) => {
   const [taskList, setTaskList] = useState(tasks);
 
+  const onTaskDelete = (deletedTaskNo) => {
+    setTaskList((prev) => prev.filter((task) => task.no !== deletedTaskNo));
+  };
+
   return (
     <div className="Task_List">
       <ul>
@@ -19,15 +26,22 @@ export const TaskList = ({ tasks }) => {
             no={task.no}
             name={task.name}
             done={task.done}
-            onDelete={(deletedTaskNo) => {
-              setTaskList((prev) =>
-                prev.filter((task) => task.no !== deletedTaskNo),
-              );
-            }}
+            onDelete={() => onTaskDelete(task.no)}
           />
         ))}
       </ul>
-      <input className="Input_Add_Task" type="text" placeholder="태스크 추가" />
+      <InputAddTask
+        onAdd={(name) =>
+          setTaskList((prev) => [
+            ...prev,
+            {
+              no: prev.length + 1 + MOCK_ID_MODIFIER,
+              name: `${event.target.value}`,
+              done: false,
+            },
+          ])
+        }
+      />
     </div>
   );
 };
