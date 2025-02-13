@@ -27,9 +27,7 @@ export const TabBox = ({ tabs }) => {
               key={tab.no}
               name={tab.name}
               contents={tab.contents}
-              onClick={() => {
-                setTabViewIndex(index);
-              }}
+              onClick={() => setTabViewIndex(index)}
               active={index === tabViewIndex}
             />
           ))
