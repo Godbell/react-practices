@@ -12,7 +12,21 @@ function App() {
   return (
     <div id={'App'}>
       <RegisterForm />
-      <SearchBar />
+      <SearchBar
+        onSearch={(q) => {
+          const lowercasedQuery = q?.toLowerCase() ?? '';
+
+          setEmails(
+            data.filter((e) => {
+              const fullName = `${e.firstName.toLowerCase()} ${e.lastName.toLowerCase()}`;
+              return (
+                fullName.includes(lowercasedQuery) ||
+                e.email.toLowerCase().includes(lowercasedQuery)
+              );
+            }),
+          );
+        }}
+      />
       <Emaillist emails={emails} />
     </div>
   );
