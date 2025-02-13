@@ -37,7 +37,7 @@ export const TaskList = ({ tasks }) => {
             ...prev,
             {
               no: prev.length + 1 + MOCK_ID_MODIFIER,
-              name: `${event.target.value}`,
+              name: `${name}`,
               done: false,
             },
           ])
