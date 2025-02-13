@@ -18,19 +18,6 @@ import { _Tabs } from '../assets/scss/Tabs.scss';
 export const TabBox = ({ tabs }) => {
   const [tabViewIndex, setTabViewIndex] = useState(-1);
 
-  if (tabViewIndex != -1) {
-    tabs = tabs.map((tab, index) => {
-      const { active, ...tabData } = tab;
-
-      return {
-        active: tabViewIndex === index,
-        ...tabData,
-      };
-    });
-
-    tabs[tabViewIndex].active = true;
-  }
-
   return (
     <div className={Tab_Box}>
       <ul className={_Tabs}>
@@ -43,7 +30,7 @@ export const TabBox = ({ tabs }) => {
               onClick={() => {
                 setTabViewIndex(index);
               }}
-              active={tab.active}
+              active={index === tabViewIndex}
             />
           ))
           .reverse()}
