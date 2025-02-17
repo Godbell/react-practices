@@ -13,16 +13,14 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("/error")
 public class WhitelabelErrorController implements ErrorController {
 
-	@RequestMapping(value = {"", "/{statusCode:[0-9]{3}}"})
-	public String errorHanlder(@PathVariable Optional<Integer> statusCode, HttpServletRequest request) {
-		return MessageFormat.format("errors/{0}", statusCode
-				.map(Object::toString)		// from GlobalExceptionHandler
-				.orElse(Optional
-						.ofNullable(request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE))
-						.map(Object::toString)
-						.orElse("unknown")	// from Whitelabel
-				)
-		);
-	}
-	
+  @RequestMapping(value = {"", "/{statusCode:[0-9]{3}}"})
+  public String errorHanlder(@PathVariable Optional<Integer> statusCode,
+      HttpServletRequest request) {
+    return MessageFormat.format("errors/{0}",
+        statusCode.map(Object::toString)
+            .orElse(Optional.ofNullable(request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE))
+                .map(Object::toString).orElse("unknown") // from Whitelabel
+            ));
+  }
+
 }
