@@ -44,7 +44,6 @@ export const TaskList = ({ initialCardNo }) => {
   };
 
   const deleteTask = async (taskNo) => {
-    console.log(`deleteing ${taskNo}`);
     await axios.delete(`/kanbanboard/task/${taskNo}`);
     await fetchTasks();
   };
