@@ -1,48 +1,74 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Task } from './Task';
 import { InputAddTask } from './InputAddTask';
 import { Task_List } from '../assets/scss/taskList.scss';
+import axios from 'axios';
 
 const MOCK_ID_MODIFIER = 100;
 
 /**
  * @param {{
- *   tasks: TaskData[]
+ *   cardId: number
  * }} props
  * @returns {React.JSX.Element}
  */
-export const TaskList = ({ tasks }) => {
-  const [taskList, setTaskList] = useState(tasks);
+export const TaskList = ({ initialCardNo }) => {
+  const [cardNo, setCardNo] = useState(initialCardNo);
+  const [tasks, setTasks] = useState([]);
 
-  const onTaskDelete = (deletedTaskNo) => {
-    setTaskList((prev) => prev.filter((task) => task.no !== deletedTaskNo));
+  const fetchTasks = async () => {
+    axios
+      .get('/kanbanboard/task', {
+        params: {
+          cardNo: cardNo,
+        },
+      })
+      .then((res) => {
+        console.log(JSON.stringify(res.data?.data ?? []));
+        setTasks(res.data?.data ?? []);
+      })
+      .catch((e) => console.error(e));
   };
+
+  const addTask = async (title) => {
+    await axios.post(
+      '/kanbanboard/task',
+      { no: null, name: title, done: 'N', cardNo },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+    await fetchTasks();
+  };
+
+  const deleteTask = async (taskNo) => {
+    console.log(`deleteing ${taskNo}`);
+    await axios.delete(`/kanbanboard/task/${taskNo}`);
+    await fetchTasks();
+  };
+
+  useEffect(() => {
+    fetchTasks();
+  }, [cardNo]);
 
   return (
     <div className={Task_List}>
       <ul>
-        {taskList.map((task) => (
+        {tasks.map((task) => (
           <Task
             key={task.no}
             no={task.no}
             name={task.name}
             done={task.done === 'Y'}
-            onDelete={() => onTaskDelete(task.no)}
+            onDelete={() => {
+              deleteTask(task.no);
+            }}
           />
         ))}
       </ul>
-      <InputAddTask
-        onAdd={(name) =>
-          setTaskList((prev) => [
-            ...prev,
-            {
-              no: prev.length + 1 + MOCK_ID_MODIFIER,
-              name: `${name}`,
-              done: false,
-            },
-          ])
-        }
-      />
+      <InputAddTask onAdd={(title) => addTask(title)} />
     </div>
   );
 };

@@ -7,8 +7,8 @@ import axios from 'axios';
 function KanbanBoard() {
   const [cards, setCards] = useState([]);
 
-  const fetchCards = () => {
-    axios
+  const fetchCards = async () => {
+    await axios
       .get('/kanbanboard/card')
       .then((res) => setCards([...res.data.data]))
       .catch((e) => console.error(e));

@@ -12,7 +12,7 @@ export const InputAddTask = ({ onAdd }) => {
       placeholder="태스크 추가"
       value={text}
       onKeyDown={(event) => {
-        if (event.key !== 'Enter') return;
+        if (event.key !== 'Enter' || !event.target.value) return;
 
         onAdd(event.target.value);
         setText('');
