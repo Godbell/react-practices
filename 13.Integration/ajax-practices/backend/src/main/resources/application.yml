@@ -5,6 +5,16 @@ spring:
   profiles:
     active: development
 
+springdoc:
+  api-docs:
+    path: /api-docs
+  packagesToScan:
+    - ajax.controller.api
+  swagger-ui:
+    path: /swagger-ui
+    operations-sorter: method
+    groups-order: DESC
+    tags-sorter: alpha
 ---
 # common profile
 spring:
