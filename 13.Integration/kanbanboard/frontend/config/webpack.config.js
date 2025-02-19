@@ -44,6 +44,14 @@ module.exports = function (env) {
       liveReload: true,
       compress: true,
       hot: false,
+      proxy: [
+        {
+          context: ['/kanbanboard'],
+          target: 'http://localhost:8080',
+          secure: false,
+          changeOrigin: true,
+        },
+      ],
     },
   };
 };

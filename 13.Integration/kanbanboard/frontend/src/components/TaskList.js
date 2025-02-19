@@ -26,7 +26,7 @@ export const TaskList = ({ tasks }) => {
             key={task.no}
             no={task.no}
             name={task.name}
-            done={task.done}
+            done={task.done === 'Y'}
             onDelete={() => onTaskDelete(task.no)}
           />
         ))}

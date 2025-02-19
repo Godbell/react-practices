@@ -16,7 +16,6 @@ export const CardList = ({ cards, status }) => {
           no={card.no}
           title={card.title}
           description={card.description}
-          tasks={card.tasks}
         />
       ))}
     </div>

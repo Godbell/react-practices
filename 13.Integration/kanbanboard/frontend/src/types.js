@@ -17,5 +17,4 @@
  * @property {number} no
  * @property {string} title
  * @property {string} description
- * @property {TaskData[]} tasks
  */
