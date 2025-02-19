@@ -1,12 +1,11 @@
 package ajax;
 
-import ajax.domain.Item;
+import java.util.LinkedList;
+import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.util.LinkedList;
-import java.util.List;
+import ajax.domain.Item;
 
 @SpringBootApplication
 public class AjaxBackendApplication {

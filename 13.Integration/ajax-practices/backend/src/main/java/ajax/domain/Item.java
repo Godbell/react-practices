@@ -1,6 +1,13 @@
 package ajax.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -8,17 +15,20 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-@EqualsAndHashCode(exclude = {"type", "name", "image"})
+@EqualsAndHashCode(exclude = {"type", "name", "image"}) // item1.equals(item2)
 public class Item {
-	@NonNull
-	private Long id;
+  @NonNull
+  private Long id;
 
-	@NonNull
-	private String type;
+  @NonNull
+  private String type;
 
-	@NonNull
-	private String name;
+  @NonNull
+  private String name;
 
-	private String image;
+  private String image;
 
+  public Item(Long id) {
+    this.id = id;
+  }
 }

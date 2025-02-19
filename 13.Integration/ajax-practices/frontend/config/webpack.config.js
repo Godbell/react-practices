@@ -49,12 +49,14 @@ module.exports = function (env) {
       liveReload: true,
       compress: true,
       hot: false,
-      // proxy: [
-      //   {
-      //     context: ['/item', '/assets'],
-      //     target: 'http://localhost:8080',
-      //   },
-      // ],
+      proxy: [
+        {
+          context: ['/item', '/assets'],
+          target: 'http://localhost:8080',
+          secure: false,
+          changeOrigin: true,
+        },
+      ],
     },
   };
 };
