@@ -4,24 +4,20 @@ import { InputAddTask } from './InputAddTask';
 import { Task_List } from '../assets/scss/taskList.scss';
 import axios from 'axios';
 
-const MOCK_ID_MODIFIER = 100;
-
 /**
  * @param {{
- *   cardId: number
+ *   initialCardNo: number
  * }} props
  * @returns {React.JSX.Element}
  */
 export const TaskList = ({ initialCardNo }) => {
-  const [cardNo, setCardNo] = useState(initialCardNo);
+  const [cardNo] = useState(initialCardNo);
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
     axios
       .get('/kanbanboard/task', {
-        params: {
-          cardNo: cardNo,
-        },
+        params: { cardNo },
       })
       .then((res) => {
         console.log(JSON.stringify(res.data?.data ?? []));

@@ -25,7 +25,7 @@ export const Task = ({ no, name, done, onDelete }) => {
         type="checkbox"
         checked={isDone}
         onChange={() => {
-          setIsDone(async (prev) => !prev);
+          setIsDone((prev) => !prev);
         }}
       />
       {name}
